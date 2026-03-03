@@ -1,0 +1,16 @@
+type JobsResult {
+  jobs: [MaintenanceJob!]!
+  queryCount: Int!
+  total: Int!
+}
+
+type MaintenanceJob {
+  id: ID!
+  address: String!
+  date: String!
+  duration: Float!
+}
+
+type Query {
+  jobs(mode: String!, page: Int!, limit: Int!): JobsResult! @field(resolver: "App\\GraphQL\\JobsResolver@resolve")
+}
